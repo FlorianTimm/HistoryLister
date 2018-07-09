@@ -35,11 +35,11 @@ public class HistoryListerK implements Runnable {
 		changes = new ChangeSetDB();
 	}
 
-	public boolean connect(String user, String passwort) {
+	public boolean connect(String database, String user, String passwort) {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
-			con = DriverManager.getConnection("jdbc:oracle:thin:@//10.62.42.25:6543/verklhhp", user, passwort);
+			con = DriverManager.getConnection("jdbc:oracle:thin:@//" + database, user, passwort);
 			return true;
 		} catch (ClassNotFoundException e) {
 			log("ClassNotFoundException: " + e.getMessage());
